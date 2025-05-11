@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rollingdeploy
+  name: rollingdeploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: rollingdeploy
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rollingdeploy
+    spec:
+      containers:
+      - image: httpd:2.4
+        name: httpd
