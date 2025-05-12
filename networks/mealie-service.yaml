@@ -1,0 +1,19 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: mealie-deploy
+    name: mealie-service
+    namespace: kingsam-namespace
+  spec:
+    ports:
+    - port: 9000
+      protocol: TCP
+      targetPort: 9000
+    selector:
+      app: mealie-deploy
+    sessionAffinity: None
+    type: LoadBalancer
+kind: List

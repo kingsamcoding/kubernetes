@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: newserver
+  name: newserver
+spec:
+  containers:
+  - image: httpd
+    name: newserver
+    ports:
+      - containerPort: 8081
+  - image: ghcr.io/mealie-recipes/mealie:v2.8.0
+    name: mealie
+    ports:
+      - containerPort: 9000
