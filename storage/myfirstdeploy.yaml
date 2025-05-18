@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myfirstdeploy
+  name: myfirstdeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myfirstdeploy
+  template:
+    metadata:
+      labels:
+        app: myfirstdeploy
+    spec:
+      containers:
+      - image: httpd
+        name: httpd
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+          - mountPath: /scratch
+            name: my-pvc
+      volumes:
+      - name: my-pvc
+        persistentVolumeClaim:
+          claimName: my-pvc
