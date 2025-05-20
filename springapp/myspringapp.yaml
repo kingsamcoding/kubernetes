@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: myspringapp
+  name: myspringapp
+spec:
+  containers:
+  - image: kingsam12/myspringapp:1
+    name: myspringapp
+    ports:
+    - containerPort: 8080
